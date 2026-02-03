@@ -1,13 +1,13 @@
+
 {
-  "name": "walkie-vercel-ready",
+  "name": "walkie",
   "private": true,
   "type": "module",
   "engines": {
     "node": "20.x"
   },
   "scripts": {
-    "build": "echo \"no build step\"",
-    "start": "node -e \"console.log('ok')\""
+    "build": "echo no-build"
   },
   "dependencies": {
     "firebase-admin": "^12.5.0",
