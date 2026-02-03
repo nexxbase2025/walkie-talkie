@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Walkie PWA</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b0f1a" />
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <header class="top">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="title">WALKIE</div>
+        <div class="sub">PTT por internet • Sala por QR • 1–5 personas</div>
+      </div>
+    </div>
+
+    <button id="installBtn" class="ghost" hidden>Instalar</button>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="row">
+        <div>
+          <div class="label">Sala</div>
+          <div class="roomline">
+            <input id="roomInput" maxlength="32" placeholder="Ej: amigos-123" />
+            <button id="newRoomBtn" class="ghost">Nueva</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row two">
+        <button id="joinBtn" class="primary">Entrar</button>
+        <button id="leaveBtn" class="danger" disabled>Salir</button>
+      </div>
+
+      <div class="stats">
+        <div class="pill">
+          <span class="k">Estado</span>
+          <span id="status" class="v">Listo</span>
+        </div>
+        <div class="pill">
+          <span class="k">Conectados</span>
+          <span id="peersCount" class="v">0</span>
+        </div>
+      </div>
+
+      <div class="row two">
+        <button id="dndBtn" class="ghost" disabled>No molestar: OFF</button>
+        <button id="pushBtn" class="ghost" disabled>Activar alertas</button>
+      </div>
+
+      <div class="qrbox">
+        <div class="qrTitle">Comparte esta sala</div>
+        <div id="qr"></div>
+        <div class="small" id="shareLink"></div>
+        <div class="row two">
+          <button id="copyBtn" class="ghost" disabled>Copiar link</button>
+          <button id="shareBtn" class="ghost" disabled>Compartir</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card talk">
+      <div class="talkTop">
+        <div>
+          <div class="label">Modo</div>
+          <div class="hint">Grupo (todos) o Directo (1 persona)</div>
+        </div>
+        <div class="modeBox">
+          <select id="modeSelect">
+            <option value="group">GRUPO</option>
+            <option value="direct">DIRECTO</option>
+          </select>
+          <input id="toUidInput" maxlength="16" placeholder="UID destino (solo directo)" />
+        </div>
+      </div>
+
+      <button id="pttBtn" class="ptt" disabled>
+        <div class="pttInner">
+          <div class="pttText">PRESIONA</div>
+          <div class="pttSub">para hablar</div>
+        </div>
+      </button>
+
+      <div class="meter">
+        <div id="meterBar" class="bar"></div>
+      </div>
+
+      <div class="foot small">
+        Consejo: usa audífonos para evitar eco. En iPhone con pantalla apagada el audio no es 100% confiable; las alertas push ayudan.
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom small">
+    WebRTC + Firestore (señalización) + Web Push (alertas) • Hosting: Vercel
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
